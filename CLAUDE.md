@@ -21,6 +21,13 @@ Each co-broker gets a standalone HTML at `brokers/<slug>.html` (clone of index.h
 - `index.html` is truncated mid-`data-cfemail` attribute at EOF (deployed that way for 35+
   days; browsers recover). Derivative files under `brokers/` replace the truncated tail with
   a clean mailto + `</body></html>`.
-- No FL Realtor license footer (SL3481954) is in the source brochure — the closing strip is
-  just a SVG "VANTAGE POINT INVESTMENTS" wordmark with a contact email. If/when compliance
-  language gets added, add it once at the source so every broker version inherits.
+- No FL Realtor license footer is in the source brochure — Lake Shadroe Resort & Marina LLC
+  is the developer/seller and is exempt from FL cooperating-broker advertising rules.
+  Co-brokers featured on derivative versions need no license number on the brochure either.
+- **Do NOT remove `"outputDirectory": "."` from `vercel.json`** while the `public/`
+  directory exists. Vercel auto-detects `public/` as a Next.js project and produces
+  empty-routed deployments (every route 404s) without the explicit override.
+- **PDF generation requires HTTP, not file://** — Chrome's `file://` loader resolves the
+  leading `/` in `<img src="/public/...">` against the filesystem root, so the headshot
+  won't load. Spin up `python3 -m http.server 8765 --bind 127.0.0.1` in the repo root,
+  then point Chrome headless at `http://127.0.0.1:8765/brokers/<slug>.html`.
