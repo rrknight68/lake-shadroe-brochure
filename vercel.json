@@ -3,6 +3,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/brokers/edwin-reyes", "destination": "/brokers/edwin-reyes.html" }
+    { "source": "/brokers/edwin-reyes", "destination": "/brokers/edwin-reyes.html" },
+    { "source": "/brokers/robert-amick", "destination": "/brokers/robert-amick.html" }
   ]
 }
